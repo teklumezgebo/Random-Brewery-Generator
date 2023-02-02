@@ -1,1 +1,1 @@
-This project will be using a random user API (https://randomuser.me/) and show the user a batch of random user data.
+This project will display 5 random breweries for the user to interact with (https://api.openbrewerydb.org/breweries/)
