@@ -1,0 +1,1 @@
+This project will be using a random user API (https://randomuser.me/) and show the user a batch of random user data.
