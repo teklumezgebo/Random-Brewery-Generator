@@ -6,3 +6,17 @@ h1 {
     text-align: center;
     font-family: "Lucida Console", "Courier New", monospace;
 }
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; 
+    background-color: rgb(6, 17, 161);
+  }
+
+  .container {
+    padding: 2px 16px;
+    color: rgb(249, 247, 246);
+    font-family: "Lucida Console", "Courier New", monospace;
+    text-align: center;
+  }
