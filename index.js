@@ -9,4 +9,6 @@ A message pops up from the brower to notify the user that the copied item was co
 */ 
 
 
-
+fetch('https://api.openbrewerydb.org/breweries/random?size=5')
+.then(res => res.json())
+.then(data => console.log(data))
