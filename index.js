@@ -15,6 +15,11 @@ let breweries = {
         .then((data) => this.showBrewery(data))
     },
     showBrewery: function(data) {
-        data.filter()
+       let newData = data.filter(function (value) {
+        return value.name &&
+               value.street &&
+               value.city &&
+               value.state &&
+       })
     }
 }
