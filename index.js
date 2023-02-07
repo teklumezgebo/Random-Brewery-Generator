@@ -13,7 +13,8 @@ let
 fetch('https://api.openbrewerydb.org/breweries/random?size=5')
 .then(res => res.json())
 .then(function(data) {
-    console.log(data)
-
+    data.filter(element => {
+        
+    });
 })
 
