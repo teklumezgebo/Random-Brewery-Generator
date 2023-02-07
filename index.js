@@ -28,11 +28,7 @@ let breweries = {
 
 }
 
-
-const refreshButton = document.getElementById('btn');
-
-const refreshPage = () => {
-  window.location.reload();
-}
-
-refreshButton.addEventListener('click', refreshPage)
+let button = document.getElementById('btn')
+button.addEventListener('click', function (){
+    window.location.reload()
+})
