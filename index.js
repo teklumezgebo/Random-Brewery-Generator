@@ -25,5 +25,9 @@ let breweries = {
        const {street} = newData.street
        const {city} = newData.city
        const {state} = newData.state
+       document.querySelector(".name").innertText = name
+       document.querySelector(".street").innertText = street
+       document.querySelector(".city").innertText = city
+       document.querySelector(".state").innertText = state
     }
 }
