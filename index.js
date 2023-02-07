@@ -8,13 +8,15 @@ Color change on mouse over, white -> blue. https://developer.mozilla.org/en-US/d
 A message pops up from the brower to notify the user that the copied item was copied. https://developer.mozilla.org/en-US/docs/Web/API/Element/copy_event ("copy")
 */ 
 
-let 
+function 
 
-fetch('https://api.openbrewerydb.org/breweries/random?size=5')
-.then(res => res.json())
-.then(function(data) {
-    data.filter(element => {
+let breweries = {
+    getBrewery: function () {
+        fetch('https://api.openbrewerydb.org/breweries/random?size=5')
+        .then(res => res.json())
+        .then((data) => this.showBrewery(data))
+    },
+    showBrewery: function(data) {
         
-    });
-})
-
+    }
+}
