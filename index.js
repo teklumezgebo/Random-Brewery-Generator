@@ -15,19 +15,13 @@ let breweries = {
         .then((data) => this.showBrewery(data))
     },
     showBrewery: function(data) {
-       let newData = data.filter(function (value) {
-        return value.name &&
-               value.street &&
-               value.city &&
-               value.state &&
-       })
-       const {name} = newData.name
-       const {street} = newData.street
-       const {city} = newData.city
-       const {state} = newData.state
-       document.querySelector(".name").innertText = name
-       document.querySelector(".street").innertText = street
-       document.querySelector(".city").innertText = city
-       document.querySelector(".state").innertText = state
+        const newArry = Object.keys(data)
+        .filter((key) => key.includes("name", "street", "city", "state"))
+        .reduce((obj, key) => {
+            return Object.assign (obj, { 
+                [key]: data[key]
+                })
+        }, {})
     }
+
 }
