@@ -21,5 +21,9 @@ let breweries = {
                value.city &&
                value.state &&
        })
+       const {name} = newData.name
+       const {street} = newData.street
+       const {city} = newData.city
+       const {state} = newData.state
     }
 }
