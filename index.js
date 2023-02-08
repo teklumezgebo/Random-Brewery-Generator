@@ -11,7 +11,34 @@ A message pops up from the brower to notify the user that the copied item was co
 fetch('https://api.openbrewerydb.org/breweries/random?size=5')
         .then(response => response.json())
         .then((data) => {
-            let objects = data
+            data.forEach(element => {
+                let name = element.name
+                let street = element.street
+                let city = element.city
+                let state = element.state
+
+                let container = document.createElement("ul")
+                container.setAttribute('id', 'container')
+                container.setAttribute('class', 'container')
+
+                let nameElement = document.createElement("li")
+                nameElement.innerText = name
+                container.appendChild(nameElement)
+
+                let streetElement = document.createElement("li")
+                streetElement.innerText = street
+                container.appendChild(streetElement)
+
+                let cityElement = document.createElement("li")
+                cityElement.innerText = city
+                container.appendChild(cityElement)
+
+                let stateElement = document.createElement("li")
+                stateElement.innerText = state
+                container.appendChild(stateElement)
+
+                document.body.appendChild(container)
+            });
         })
 
     
@@ -19,9 +46,9 @@ fetch('https://api.openbrewerydb.org/breweries/random?size=5')
 // Event listeners
 
 
-const test = document.getElementById('first')
+const colorChange = document.getElementById('container')
 
-test.addEventListener("mouseenter", (event) => {
+colorChange.addEventListener("mouseenter", (event) => {
     event.target.style.color = "purple"
 
     setTimeout(() => {
@@ -30,7 +57,7 @@ test.addEventListener("mouseenter", (event) => {
 }, false)
 
 
-test.addEventListener("mouseover", (event) => { 
+colorChange.addEventListener("mouseover", (event) => { 
     event.target.style.color = "orange";
   
     
