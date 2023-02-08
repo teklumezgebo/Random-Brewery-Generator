@@ -28,6 +28,27 @@ let breweries = {
 
 }
 
+// Event listeners
+const test = document.getElementById('first')
+
+test.addEventListener("mouseenter", (event) => {
+    event.target.style.color = "purple"
+
+    setTimeout(() => {
+        event.target.style.color = ""
+}, 500)
+}, false)
+
+
+test.addEventListener("mouseover", (event) => { 
+    event.target.style.color = "orange";
+  
+    
+    setTimeout(() => {
+      event.target.style.color = "";
+    }, 500);
+  }, false);
+
 let button = document.getElementById('btn')
 button.addEventListener('click', function (){
     window.location.reload()
