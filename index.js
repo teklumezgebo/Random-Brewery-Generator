@@ -15,27 +15,27 @@ fetch('https://api.openbrewerydb.org/breweries/random?size=5')
                 let name = element.name
                 let street = element.street
                 let city = element.city
-                let state = element.state
+                let website = element.website_url
 
-                let container = document.createElement("ul")
+                let container = document.createElement("div")
                 container.setAttribute('id', 'container')
                 container.setAttribute('class', 'container')
 
-                let nameElement = document.createElement("li")
+                let nameElement = document.createElement("p")
                 nameElement.innerText = name
                 container.appendChild(nameElement)
 
-                let streetElement = document.createElement("li")
+                let streetElement = document.createElement("p")
                 streetElement.innerText = street
                 container.appendChild(streetElement)
 
-                let cityElement = document.createElement("li")
+                let cityElement = document.createElement("p")
                 cityElement.innerText = city
                 container.appendChild(cityElement)
 
-                let stateElement = document.createElement("li")
-                stateElement.innerText = state
-                container.appendChild(stateElement)
+                let websiteElement = document.createElement("p")
+                websiteElement.innerText = website
+                container.appendChild(websiteElement)
 
                 document.body.appendChild(container)
             });
