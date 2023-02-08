@@ -29,6 +29,8 @@ let breweries = {
 }
 
 // Event listeners
+
+
 const test = document.getElementById('first')
 
 test.addEventListener("mouseenter", (event) => {
@@ -48,6 +50,7 @@ test.addEventListener("mouseover", (event) => {
       event.target.style.color = "";
     }, 500);
   }, false);
+  
 
 let button = document.getElementById('btn')
 button.addEventListener('click', function (){
@@ -55,4 +58,8 @@ button.addEventListener('click', function (){
     return false
 })
 
+
+document.addEventListener("copy", function() {
+  alert("Text copied!");
+});
 
