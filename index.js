@@ -15,12 +15,15 @@ fetch('https://api.openbrewerydb.org/breweries/random?size=5')
                 let name = element.name
                 let street = element.street
                 let city = element.city
+                let state = element.state
                 let website = element.website_url
 
                 let container = document.getElementById('list')
 
                 let nameElement = document.createElement("p")
                 nameElement.innerText = name
+                nameElement.style.fontWeight = "bold"
+                nameElement.style.color = "purple"
                 container.appendChild(nameElement)
 
                 let streetElement = document.createElement("p")
@@ -30,6 +33,10 @@ fetch('https://api.openbrewerydb.org/breweries/random?size=5')
                 let cityElement = document.createElement("p")
                 cityElement.innerText = city
                 container.appendChild(cityElement)
+
+                let stateElement = document.createElement("p")
+                stateElement.innerText = state
+                container.appendChild(stateElement)
 
                 let websiteElement = document.createElement("p")
                 websiteElement.innerText = website
@@ -44,7 +51,7 @@ fetch('https://api.openbrewerydb.org/breweries/random?size=5')
 // Event listeners
 
 
-// const colorChange = document.getElementById('list-container')
+// const colorChange = document.getElementById('box')
 
 // colorChange.addEventListener("mouseenter", (event) => {
 //     event.target.style.color = "purple"
@@ -73,6 +80,6 @@ button.addEventListener('click', function (){
 
 
 document.addEventListener("copy", function() {
-  alert("Text copied!")
+  alert("Copied!")
 })
 
