@@ -42,7 +42,6 @@ fetch('https://api.openbrewerydb.org/breweries/random?size=5')
                 websiteElement.innerText = website
                 container.appendChild(websiteElement)
 
-                // document.body.appendChild(container)
             });
         })
 
