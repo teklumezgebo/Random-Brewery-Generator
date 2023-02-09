@@ -17,9 +17,7 @@ fetch('https://api.openbrewerydb.org/breweries/random?size=5')
                 let city = element.city
                 let website = element.website_url
 
-                let container = document.createElement("div")
-                container.setAttribute('id', 'container')
-                container.setAttribute('class', 'container')
+                let container = document.getElementById('list')
 
                 let nameElement = document.createElement("p")
                 nameElement.innerText = name
@@ -37,7 +35,7 @@ fetch('https://api.openbrewerydb.org/breweries/random?size=5')
                 websiteElement.innerText = website
                 container.appendChild(websiteElement)
 
-                document.body.appendChild(container)
+                // document.body.appendChild(container)
             });
         })
 
@@ -46,28 +44,28 @@ fetch('https://api.openbrewerydb.org/breweries/random?size=5')
 // Event listeners
 
 
-const colorChange = document.getElementById('container')
+// const colorChange = document.getElementById('list-container')
 
-colorChange.addEventListener("mouseenter", (event) => {
-    event.target.style.color = "purple"
+// colorChange.addEventListener("mouseenter", (event) => {
+//     event.target.style.color = "purple"
 
-    setTimeout(() => {
-        event.target.style.color = ""
-}, 500)
-}, false)
+//     setTimeout(() => {
+//         event.target.style.color = ""
+// }, 500)
+// }, false)
 
 
-colorChange.addEventListener("mouseover", (event) => { 
-    event.target.style.color = "orange";
+// colorChange.addEventListener("mouseover", (event) => { 
+//     event.target.style.color = "orange"
   
     
-    setTimeout(() => {
-      event.target.style.color = "";
-    }, 500);
-  }, false);
+//     setTimeout(() => {
+//       event.target.style.color = ""
+//     }, 500)
+//   }, false)
   
 
-let button = document.getElementById('btn')
+let button = document.getElementById('refresh-button')
 button.addEventListener('click', function (){
     window.location.reload()
     return false
@@ -75,6 +73,6 @@ button.addEventListener('click', function (){
 
 
 document.addEventListener("copy", function() {
-  alert("Text copied!");
-});
+  alert("Text copied!")
+})
 

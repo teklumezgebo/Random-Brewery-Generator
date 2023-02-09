@@ -18,9 +18,15 @@ h1 {
     height: 175px;
   }
 
-  .container {
-    padding: 2px 16px;
-    color: rgb(248, 248, 248);
-    font-family: "Lucida Console", "Courier New", monospace;
-    text-align: left;
-  }
+.list-container {
+  padding: 2px 16px;
+  color: rgb(0, 0, 0);
+  font-family: "Lucida Console", "Courier New", monospace;
+  text-align: center;
+}
+
+#refresh-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
