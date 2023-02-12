@@ -1,16 +1,6 @@
-// API link: "https://api.openbrewerydb.org/breweries/random?size=5"
-
-/* For array iteration I will use the .filter() method to extract elements relevant to the data I want to display to the user. */
-
-/* Event listener ideas:
-Button that allows for refresh of current page. ("click")
-Color change on mouse over, white -> blue. https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseover_event ("mouseover")
-A message pops up from the brower to notify the user that the copied item was copied. https://developer.mozilla.org/en-US/docs/Web/API/Element/copy_event ("copy")
-*/ 
-
-function pageReload() {
+function breweryList() {
     const timestamp = new Date().getTime()
-    fetch(`https://api.openbrewerydb.org/breweries/random?size=5timestap=${timestamp}`)
+    fetch(`https://api.openbrewerydb.org/breweries/random?size=5timestamp=${timestamp}`)
         .then(response => response.json())
         .then((data) => {
             data.forEach(element => {
@@ -44,42 +34,20 @@ function pageReload() {
                 websiteElement.href = `${website}`
                 websiteElement.innerText = website
                 container.appendChild(websiteElement)
-
             });
         })
 }
 
-
-
 // Event listeners
 
+document.addEventListener("click", function(event) {
+    if (event.target.tagName === "A") {
+      event.preventDefault();
+      window.open(event.target.href, "_blank")
+    }
+  })
 
-// const colorChange = document.getElementById('box')
-
-// colorChange.addEventListener("mouseenter", (event) => {
-//     event.target.style.color = "purple"
-
-//     setTimeout(() => {
-//         event.target.style.color = ""
-// }, 500)
-// }, false)
-
-
-// colorChange.addEventListener("mouseover", (event) => { 
-//     event.target.style.color = "orange"
-  
-    
-//     setTimeout(() => {
-//       event.target.style.color = ""
-//     }, 500)
-//   }, false)
-  
-
-let button = document.getElementById('refresh-button')
-button.addEventListener('click', pageReload())
-
-
-
+document.addEventListener('window.onload', breweryList())
 
 document.addEventListener("copy", function() {
   alert("Copied!")
