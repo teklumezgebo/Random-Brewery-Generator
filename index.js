@@ -40,16 +40,20 @@ function breweryList() {
 
 // Event listeners
 
-document.addEventListener("click", function(event) {
+function redirctLink(event){
     if (event.target.tagName === "A") {
       event.preventDefault();
       window.open(event.target.href, "_blank")
     }
-  })
+  }
+
+  function alertUser() {
+    alert("Copied!")
+  }
+
+document.addEventListener("click", redirctLink)
 
 document.addEventListener('window.onload', breweryList())
 
-document.addEventListener("copy", function() {
-  alert("Copied!")
-})
+document.addEventListener("copy", alertUser)
 
