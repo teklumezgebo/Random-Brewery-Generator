@@ -40,7 +40,7 @@ function breweryList() {
 
 // Event listeners
 
-function redirctLink(event){
+function redirectLink(event){
     if (event.target.tagName === "A") {
       event.preventDefault();
       window.open(event.target.href, "_blank")
@@ -51,7 +51,7 @@ function redirctLink(event){
     alert("Copied!")
   }
 
-document.addEventListener("click", redirctLink)
+document.addEventListener("click", redirectLink)
 
 document.addEventListener('window.onload', breweryList())
 
