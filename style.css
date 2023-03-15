@@ -26,3 +26,8 @@ h1 {
   background-color: black;
   border-radius: 30px 30px 30px 30px;
 }
+
+.title {
+  align-items: center;
+  display: flex
+}

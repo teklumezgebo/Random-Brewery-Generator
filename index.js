@@ -4,56 +4,81 @@ function breweryList() {
         .then(response => response.json())
         .then((data) => {
             data.forEach(element => {
-                let name = element.name
-                let street = element.street
-                let city = element.city
-                let state = element.state
-                let website = element.website_url
+                const name = element.name
+                const street = element.street
+                const city = element.city
+                const state = element.state
+                const website = element.website_url
 
-                let container = document.getElementById('list')
+                const container = document.getElementById('list')
 
-                let nameElement = document.createElement("p")
+                const nameElement = document.createElement("p")
+                nameElement.id = 'name'
                 nameElement.innerText = name
                 nameElement.style.fontWeight = "bold"
                 nameElement.style.color = "purple"
                 container.appendChild(nameElement)
 
-                let streetElement = document.createElement("p")
+                const streetElement = document.createElement("p")
+                streetElement.id = 'street'
                 streetElement.innerText = street
                 container.appendChild(streetElement)
 
-                let cityElement = document.createElement("p")
+                const cityElement = document.createElement("p")
+                cityElement.id = 'city'
                 cityElement.innerText = city
                 container.appendChild(cityElement)
 
-                let stateElement = document.createElement("p")
+                const stateElement = document.createElement("p")
+                stateElement.id = 'state'
                 stateElement.innerText = state
                 container.appendChild(stateElement)
 
-                let websiteElement = document.createElement("a")
-                websiteElement.href = `${website}`
-                websiteElement.innerText = website
+                const websiteElement = document.createElement("button")
+                websiteElement.id ='website-btn'
+                websiteElement.addEventListener("click", () => {
+                  window.open(`${website}`, '_blank')
+                })
+                websiteElement.innerText = 'Website'
                 container.appendChild(websiteElement)
             });
         })
 }
 
-// Event listeners
+function listRefresh() {
+  const timestamp = new Date().getTime()
+  fetch(`https://api.openbrewerydb.org/breweries/random?size=1timestamp=${timestamp}`)
+        .then(response => response.json())
+        .then((data) => {
+          data.forEach(element => {
+            const name = element.name
+            const street = element.street
+            const city = element.city
+            const state = element.state
+            const website = element.website_url
 
-function redirectLink(event){
-    if (event.target.tagName === "A") {
-      event.preventDefault();
-      window.open(event.target.href, "_blank")
-    }
-  }
+            // const names = document.getElementById('name')
+            // const streets = document.getElementById('street')
+            // const cities = document.getElementById('city')
+            // const states= document.getElementById('state')
+            // const websites = document.getElementById('website-btn')
 
-  function alertUser() {
-    alert("Copied!")
-  }
+            const elements = container.querySlector(`[data-]`)
 
-document.addEventListener("click", redirectLink)
+          })
+        })
+}
 
-document.addEventListener('window.onload', breweryList())
+
+const refreshButton = document.getElementById('refresh')
+
+refreshButton.addEventListener('click', listRefresh)
+
+document.addEventListener('DOMContentLoaded', breweryList)
+
+function alertUser() {
+  alert("Copied!")
+}
 
 document.addEventListener("copy", alertUser)
 
