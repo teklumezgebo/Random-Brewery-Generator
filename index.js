@@ -1,84 +1,94 @@
-function breweryList() {
-    const timestamp = new Date().getTime()
-    fetch(`https://api.openbrewerydb.org/breweries/random?size=5timestamp=${timestamp}`)
-        .then(response => response.json())
-        .then((data) => {
-            data.forEach(element => {
-                const name = element.name
-                const street = element.street
-                const city = element.city
-                const state = element.state
-                const website = element.website_url
-
-                const container = document.getElementById('list')
-
-                const nameElement = document.createElement("p")
-                nameElement.id = 'name'
-                nameElement.innerText = name
-                nameElement.style.fontWeight = "bold"
-                nameElement.style.color = "purple"
-                container.appendChild(nameElement)
-
-                const streetElement = document.createElement("p")
-                streetElement.id = 'street'
-                streetElement.innerText = street
-                container.appendChild(streetElement)
-
-                const cityElement = document.createElement("p")
-                cityElement.id = 'city'
-                cityElement.innerText = city
-                container.appendChild(cityElement)
-
-                const stateElement = document.createElement("p")
-                stateElement.id = 'state'
-                stateElement.innerText = state
-                container.appendChild(stateElement)
-
-                const websiteElement = document.createElement("button")
-                websiteElement.id ='website-btn'
-                websiteElement.addEventListener("click", () => {
-                  window.open(`${website}`, '_blank')
-                })
-                websiteElement.innerText = 'Website'
-                container.appendChild(websiteElement)
-            });
-        })
-}
-
-function listRefresh() {
-  const timestamp = new Date().getTime()
-  fetch(`https://api.openbrewerydb.org/breweries/random?size=1timestamp=${timestamp}`)
-        .then(response => response.json())
-        .then((data) => {
-          data.forEach(element => {
-            const name = element.name
-            const street = element.street
-            const city = element.city
-            const state = element.state
-            const website = element.website_url
-
-            // const names = document.getElementById('name')
-            // const streets = document.getElementById('street')
-            // const cities = document.getElementById('city')
-            // const states= document.getElementById('state')
-            // const websites = document.getElementById('website-btn')
-
-            const elements = container.querySlector(`[data-]`)
-
-          })
-        })
-}
-
-
+const container = document.getElementById('list')
 const refreshButton = document.getElementById('refresh')
 
-refreshButton.addEventListener('click', listRefresh)
+function createName (nameOfBrewery) {
+  const nameElement = document.createElement("p")
+  nameElement.id = 'name'
+  nameElement.innerText = nameOfBrewery
+  nameElement.style.fontWeight = "bold"
+  nameElement.style.color = "purple"
+  container.appendChild(nameElement)
+}
 
-document.addEventListener('DOMContentLoaded', breweryList)
+function createStreet (streetName) {
+  const streetElement = document.createElement("p")
+  streetElement.id = 'street'
+  streetElement.innerText = streetName
+  container.appendChild(streetElement)
+}
+
+function createCity (cityName) {
+  const cityElement = document.createElement("p")
+  cityElement.id = 'city'
+  cityElement.innerText = cityName
+  container.appendChild(cityElement)
+}
+
+function createState (stateName) {
+  const stateElement = document.createElement("p")
+  stateElement.id = 'state'
+  stateElement.innerText = stateName
+  container.appendChild(stateElement)
+}
+
+function createWebsite (websiteName) {
+  const websiteElement = document.createElement("button")
+  websiteElement.id ='website-btn'
+
+  websiteElement.addEventListener("click", () => {
+    window.open(`${websiteName}`, '_blank')
+      
+  })
+
+  websiteElement.innerText = 'Website'
+  container.appendChild(websiteElement)
+}
+
+function removeElements() {
+  const p =  document.querySelectorAll('p')
+  const buttons = document.querySelectorAll('button')
+
+  p.forEach(p => {
+    p.remove()
+  })
+
+  buttons.forEach(button => {
+    if (button.id !== 'refresh') {
+      button.remove()
+    }
+  })
+}
+
+function fetchBreweries() {
+  const timestamp = new Date().getTime()
+  fetch(`https://api.openbrewerydb.org/breweries/random?size=5timestamp=${timestamp}`)
+      .then(response => response.json())
+      .then((data) => {
+          data.forEach(element => {
+              const name = element.name
+              const street = element.street
+              const city = element.city
+              const state = element.state
+              const website = element.website_url
+
+              createName(name)
+              createStreet(street)
+              createCity(city)
+              createState(state)
+              createWebsite(website)
+
+          });
+      })
+}
 
 function alertUser() {
   alert("Copied!")
 }
 
+
+
+refreshButton.addEventListener('click', fetchBreweries)
+refreshButton.addEventListener('click', removeElements)
+document.addEventListener('DOMContentLoaded', fetchBreweries)
 document.addEventListener("copy", alertUser)
 
