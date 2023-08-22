@@ -92,3 +92,7 @@ refreshButton.addEventListener('click', removeElements)
 document.addEventListener('DOMContentLoaded', fetchBreweries)
 document.addEventListener("copy", alertUser)
 
+
+
+
+
